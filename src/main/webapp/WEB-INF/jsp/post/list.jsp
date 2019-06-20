@@ -14,6 +14,7 @@ table {
 }
 th, td {
 	padding: 5px 0;
+	text-align : center;
 }
 th {
 	border-bottom: 1px solid gray;
@@ -21,33 +22,35 @@ th {
 </style>
 </head>
 <body>
-	<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<h2>글 목록</h2>
 	<p>
-		<a href="./app/post/addForm">글쓰기</a>
+		<a href="./app/post/form">[글쓰기]</a>
+		<a href="./">[돌아가기]</a>
 	</p>
 	<p>전체 ${totalCount }건</p>
 	<form action="./app/post/list">
 		<input type="number" name="page" value="${param.page }" placeholder="페이지"
-			min="1" max="${totalCount / 100 + 1 }" step="1" style="width: 75px;">
+			min="1" max="${totalCount / 50 + 1 }" step="1" style="width: 50px;">
 		<button type="submit">조회</button>
 	</form>
 	<table>
 		<thead>
 			<tr>
 				<th>글번호</th>
-				<th>제목</th>
+				<th>학번</th>
 				<th>등록자</th>
-				<th>등록일시</th>
+				<th>내용</th>
+				<th>좋아요</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="post" items="${postList}">
 				<tr>
-					<td><a href="./app/post/view?postId=${post.postId }">${post.postId }</a></td>
-					<td><a href="./app/post/view?postId=${post.postId }">${post.title }</a></td>
+					<td>${post.postId }</td>
+					<td>${post.userId }</td>
 					<td>${post.name }</td>
-					<td>${post.cdate }</td>
+					<td><a href="./app/post/view?postId=${post.postId }">${post.content }</a></td>
+					<td>${post.sweet }<a href="./app/post/sweet?postId=${post.postId }">좋아요</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

@@ -16,7 +16,7 @@
 
 	<mvc:annotation-driven />
 	<context:component-scan base-package="org.owl" />
-<!--  
+
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/login/**" />
@@ -24,7 +24,7 @@
 			<bean class="org.owl.user.AuthCheckInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
--->
+
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
